@@ -6,6 +6,10 @@ define("Z", 19);
 $lat = ($_POST['latitude']);
 $long = ($_POST['longitude']);
 
+if (!is_numeric($lat) || !is_numeric($long)) {
+    die("Given coords ar not numbers");
+}
+
 $pixelCoords = fromGeoToPixels($lat, $long, EPS, Z);
 $tileCoords = fromPixelsToTileNumber($pixelCoords[0], $pixelCoords[1]);
 
